@@ -1,1 +1,1 @@
-{"embeddings": [{"metadataPath": "https://raw.githubusercontent.com/pilipolio/rl-study/master/projectors/doom_v1_metadata.tsv", "tensorName": "Frames", "tensorShape": [209, 128], "tensorPath": "https://raw.githubusercontent.com/pilipolio/rl-study/master/projectors/doom_v1.tsv"}]}
+{"embeddings": [{"metadataPath": "https://raw.githubusercontent.com/pilipolio/rl-study/master/projectors/doom_v1_metadata.tsv", "tensorName": "Frames", "tensorShape": [463, 128], "tensorPath": "https://raw.githubusercontent.com/pilipolio/rl-study/master/projectors/doom_v1.tsv"}]}
