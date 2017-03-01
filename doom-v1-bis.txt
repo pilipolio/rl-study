@@ -1,0 +1,27 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+for _ in range(200):
+    for _ in range(2):
+        sares = list(play_episodes(env, EpsilonGreedyQAgent(acting_model, epsilon=.05), episode_count=10))
+        print('average reward/episode = {}'.format(
+            sum(r for _, _, r, _ in sares) / float(sum(e for _, _, _, e in sares))))
+        prev_frames, target_action_rewards = sares_to_input_targets(target_model, sares, reward_clip=5, n_misses=200)
+        acting_model.fit(x=prev_frames, y=target_action_rewards, batch_size=BATCH_SIZE, nb_epoch=1, verbose=0)
+target_model = copy_model(acting_model)
+
+model = Sequential()
+
+model.add(Convolution2D(
+2, nb_row=6, nb_col=6, border_mode='valid', weights=conv1_weights,
+input_shape=[HEIGHT, WIDTH, 3], dim_ordering='tf'))
+    model.add(Activation('relu'))
+    model.add(Convolution2D(4, nb_row=2, nb_col=2, weights=conv2_weights))
+    model.add(Activation('relu'))
+    model.add(Flatten())
+    model.add(Dense(128, init='normal', activation='linear', weights=dense1_weights))
+    model.add(Activation('relu'))
+    model.add(Dense(4, init='normal', activation='linear', weights=dense2_weights))
+    model.compile(loss='mse', optimizer='adam')
+

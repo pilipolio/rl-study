@@ -1,0 +1,314 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+for _ in range(200):
+    for _ in range(2):
+        sares = list(play_episodes(env, EpsilonGreedyQAgent(acting_model, epsilon=.05), episode_count=10))
+        print('average reward/episode = {}'.format(
+            sum(r for _, _, r, _ in sares) / float(sum(e for _, _, _, e in sares))))
+        prev_frames, target_action_rewards = sares_to_input_targets(target_model, sares, reward_clip=5, n_misses=200)
+        acting_model.fit(x=prev_frames, y=target_action_rewards, batch_size=BATCH_SIZE, nb_epoch=1, verbose=0)
+target_model = copy_model(acting_model)
+
+
+model.add(Convolution2D(
+			4, nb_row=6, nb_col=6, border_mode='valid', weights=conv1_weights,
+			   input_shape=[HEIGHT, WIDTH, 3], dim_ordering='tf'))
+model.add(Activation('relu'))
+model.add(Convolution2D(8, nb_row=3, nb_col=3, weights=conv2_weights))
+model.add(Activation('relu'))
+model.add(Flatten())
+model.add(Dense(128, init='normal', activation='linear', weights=dense1_weights))
+model.add(Activation('relu'))
+model.add(Dense(4, init='normal', activation='linear', weights=dense2_weights))
+model.compile(loss='mse', optimizer='adam')
+
+average reward/episode = -356.0
+Training on 0/200 success/total out of 699 1-step experiences with actions distribution [  3   1 193   3]
+average reward/episode = -165.6
+Training on 10/206 success/total out of 365 1-step experiences with actions distribution [  0 155  36  15]
+average reward/episode = -217.5
+Training on 8/204 success/total out of 405 1-step experiences with actions distribution [  3 167   6  28]
+average reward/episode = -268.1
+Training on 4/203 success/total out of 546 1-step experiences with actions distribution [  3  31   7 162]
+average reward/episode = -340.2
+Training on 4/203 success/total out of 550 1-step experiences with actions distribution [  4 183   6  10]
+average reward/episode = -190.3
+Training on 8/205 success/total out of 363 1-step experiences with actions distribution [  1 158   2  44]
+average reward/episode = -229.6
+Training on 3/203 success/total out of 439 1-step experiences with actions distribution [  1  93   0 109]
+average reward/episode = -304.3
+Training on 3/202 success/total out of 573 1-step experiences with actions distribution [  1  52   3 146]
+average reward/episode = -116.4
+Training on 10/207 success/total out of 286 1-step experiences with actions distribution [  3 161   6  37]
+average reward/episode = -157.4
+Training on 5/204 success/total out of 379 1-step experiences with actions distribution [  1  18   2 183]
+average reward/episode = -159.1
+Training on 6/205 success/total out of 332 1-step experiences with actions distribution [  2 159   0  44]
+average reward/episode = -244.3
+Training on 6/204 success/total out of 438 1-step experiences with actions distribution [  1 134   4  65]
+average reward/episode = -329.8
+Training on 4/202 success/total out of 658 1-step experiences with actions distribution [  3  23   3 173]
+average reward/episode = -130.1
+Training on 7/205 success/total out of 305 1-step experiences with actions distribution [  2 103   0 100]
+average reward/episode = -221.6
+Training on 8/204 success/total out of 442 1-step experiences with actions distribution [  6  55   2 141]
+average reward/episode = -220.0
+Training on 5/204 success/total out of 440 1-step experiences with actions distribution [  5  70   0 129]
+average reward/episode = -246.6
+Training on 4/204 success/total out of 441 1-step experiences with actions distribution [  1 162   2  39]
+average reward/episode = -361.5
+Training on 0/200 success/total out of 699 1-step experiences with actions distribution [  3  14   2 181]
+average reward/episode = -48.2
+Training on 16/208 success/total out of 201 1-step experiences with actions distribution [  2 135   1  70]
+average reward/episode = -360.3
+Training on 4/202 success/total out of 569 1-step experiences with actions distribution [  7 156   7  32]
+average reward/episode = -353.0
+Training on 0/200 success/total out of 699 1-step experiences with actions distribution [  9   3   0 188]
+average reward/episode = -266.7
+Training on 5/203 success/total out of 586 1-step experiences with actions distribution [182   7   2  12]
+average reward/episode = -121.8
+Training on 10/206 success/total out of 299 1-step experiences with actions distribution [  3  51   3 149]
+average reward/episode = -93.3
+Training on 9/207 success/total out of 262 1-step experiences with actions distribution [  3 111   5  88]
+average reward/episode = -171.3
+Training on 7/205 success/total out of 386 1-step experiences with actions distribution [87 76  4 38]
+average reward/episode = -310.4
+Training on 1/201 success/total out of 632 1-step experiences with actions distribution [  2   4   2 193]
+average reward/episode = -251.2
+Training on 5/203 success/total out of 514 1-step experiences with actions distribution [161  35   2   5]
+average reward/episode = -227.1
+Training on 9/205 success/total out of 413 1-step experiences with actions distribution [  4 194   2   5]
+average reward/episode = -229.2
+Training on 3/203 success/total out of 512 1-step experiences with actions distribution [175   4   3  21]
+average reward/episode = -315.3
+Training on 3/202 success/total out of 569 1-step experiences with actions distribution [109  38  10  45]
+average reward/episode = -174.5
+Training on 7/205 success/total out of 373 1-step experiences with actions distribution [24 62 37 82]
+average reward/episode = -154.2
+Training on 13/206 success/total out of 417 1-step experiences with actions distribution [71 27 62 46]
+average reward/episode = -204.4
+Training on 7/205 success/total out of 400 1-step experiences with actions distribution [ 22 121   8  54]
+average reward/episode = -158.4
+Training on 7/205 success/total out of 376 1-step experiences with actions distribution [  7  24  31 143]
+average reward/episode = -283.7
+Training on 4/204 success/total out of 546 1-step experiences with actions distribution [90 82 16 16]
+average reward/episode = -151.8
+Training on 6/205 success/total out of 332 1-step experiences with actions distribution [ 38 132  19  16]
+average reward/episode = -288.6
+Training on 4/203 success/total out of 640 1-step experiences with actions distribution [39  7 83 74]
+average reward/episode = -263.2
+Training on 4/203 success/total out of 563 1-step experiences with actions distribution [154   9  13  27]
+average reward/episode = -92.3
+Training on 10/207 success/total out of 294 1-step experiences with actions distribution [ 1 33 76 97]
+average reward/episode = -96.1
+Training on 10/206 success/total out of 262 1-step experiences with actions distribution [  2 104  72  28]
+average reward/episode = -103.6
+Training on 8/205 success/total out of 305 1-step experiences with actions distribution [ 60  17   8 120]
+average reward/episode = -224.5
+Training on 8/204 success/total out of 444 1-step experiences with actions distribution [22 48 37 97]
+average reward/episode = -97.2
+Training on 13/206 success/total out of 300 1-step experiences with actions distribution [120  33  22  31]
+average reward/episode = -122.1
+Training on 14/208 success/total out of 317 1-step experiences with actions distribution [ 32 145  20  11]
+average reward/episode = 14.5
+Training on 14/208 success/total out of 143 1-step experiences with actions distribution [29 29 67 83]
+average reward/episode = -180.6
+Training on 4/204 success/total out of 432 1-step experiences with actions distribution [160   8  14  22]
+average reward/episode = -207.0
+Training on 7/204 success/total out of 428 1-step experiences with actions distribution [ 1 59 57 87]
+average reward/episode = -229.6
+Training on 6/204 success/total out of 449 1-step experiences with actions distribution [ 5 84 89 26]
+average reward/episode = -153.3
+Training on 8/205 success/total out of 377 1-step experiences with actions distribution [59 27 43 76]
+average reward/episode = -203.4
+Training on 4/203 success/total out of 436 1-step experiences with actions distribution [71 37 30 65]
+average reward/episode = -118.5
+Training on 8/205 success/total out of 319 1-step experiences with actions distribution [  2  50 102  51]
+average reward/episode = 66.5
+Training on 33/209 success/total out of 57 1-step experiences with actions distribution [ 31 129  42   7]
+average reward/episode = -75.4
+Training on 12/207 success/total out of 294 1-step experiences with actions distribution [19 35 78 75]
+average reward/episode = -96.6
+Training on 12/207 success/total out of 291 1-step experiences with actions distribution [88 47 28 44]
+average reward/episode = -6.3
+Training on 15/209 success/total out of 198 1-step experiences with actions distribution [ 5 37 83 84]
+average reward/episode = 31.1
+Training on 22/209 success/total out of 120 1-step experiences with actions distribution [41 74 66 28]
+average reward/episode = -65.2
+Training on 12/206 success/total out of 241 1-step experiences with actions distribution [15 47 65 79]
+average reward/episode = -184.5
+Training on 6/204 success/total out of 432 1-step experiences with actions distribution [152  16   7  29]
+average reward/episode = 0.3
+Training on 16/209 success/total out of 168 1-step experiences with actions distribution [ 1 46 88 74]
+average reward/episode = -132.0
+Training on 8/206 success/total out of 314 1-step experiences with actions distribution [ 2 75 69 60]
+average reward/episode = 32.6
+Training on 20/208 success/total out of 105 1-step experiences with actions distribution [ 9 72 71 56]
+average reward/episode = -64.2
+Training on 9/206 success/total out of 242 1-step experiences with actions distribution [ 16  47  36 107]
+average reward/episode = -151.4
+Training on 10/205 success/total out of 388 1-step experiences with actions distribution [16 21 92 76]
+average reward/episode = -86.5
+Training on 8/206 success/total out of 303 1-step experiences with actions distribution [158  15  16  17]
+average reward/episode = -34.0
+Training on 17/208 success/total out of 236 1-step experiences with actions distribution [ 1 40 90 77]
+average reward/episode = 25.3
+Training on 23/208 success/total out of 112 1-step experiences with actions distribution [43 87 55 23]
+average reward/episode = 31.2
+Training on 25/208 success/total out of 113 1-step experiences with actions distribution [24 47 82 55]
+average reward/episode = 36.1
+Training on 22/208 success/total out of 105 1-step experiences with actions distribution [  7  28 112  61]
+average reward/episode = 17.4
+Training on 22/209 success/total out of 122 1-step experiences with actions distribution [ 4 94 50 61]
+average reward/episode = 70.6
+Training on 43/209 success/total out of 58 1-step experiences with actions distribution [31 50 39 89]
+average reward/episode = 68.0
+Training on 44/209 success/total out of 58 1-step experiences with actions distribution [ 0 80 44 85]
+average reward/episode = 19.0
+Training on 25/208 success/total out of 135 1-step experiences with actions distribution [119  35  28  26]
+average reward/episode = 67.1
+Training on 48/209 success/total out of 60 1-step experiences with actions distribution [ 0 97 84 28]
+average reward/episode = 66.6
+Training on 35/209 success/total out of 67 1-step experiences with actions distribution [ 5 41 90 73]
+average reward/episode = 33.9
+Training on 27/209 success/total out of 95 1-step experiences with actions distribution [  6 118  51  34]
+average reward/episode = 52.0
+Training on 30/209 success/total out of 94 1-step experiences with actions distribution [30 36 63 80]
+average reward/episode = 66.9
+Training on 39/209 success/total out of 59 1-step experiences with actions distribution [ 2 95 56 56]
+average reward/episode = 36.4
+Training on 21/208 success/total out of 102 1-step experiences with actions distribution [ 8 30 95 75]
+average reward/episode = 79.6
+Training on 52/209 success/total out of 41 1-step experiences with actions distribution [  6  62 118  23]
+average reward/episode = 71.6
+Training on 48/209 success/total out of 54 1-step experiences with actions distribution [ 0 80 67 62]
+average reward/episode = 78.5
+Training on 45/209 success/total out of 43 1-step experiences with actions distribution [ 6 52 56 95]
+average reward/episode = 78.6
+Training on 49/209 success/total out of 43 1-step experiences with actions distribution [ 4 63 82 60]
+average reward/episode = 65.0
+Training on 35/209 success/total out of 68 1-step experiences with actions distribution [ 4 47 66 92]
+average reward/episode = 72.2
+Training on 39/209 success/total out of 55 1-step experiences with actions distribution [ 5 59 96 49]
+average reward/episode = 72.6
+Training on 34/209 success/total out of 55 1-step experiences with actions distribution [ 11  41  47 110]
+average reward/episode = 37.9
+Training on 27/208 success/total out of 104 1-step experiences with actions distribution [ 20  29 104  55]
+average reward/episode = 82.1
+Training on 57/209 success/total out of 36 1-step experiences with actions distribution [  0  74  27 108]
+average reward/episode = 81.5
+Training on 48/209 success/total out of 38 1-step experiences with actions distribution [ 0 48 62 99]
+average reward/episode = 79.0
+Training on 46/209 success/total out of 43 1-step experiences with actions distribution [  0  46  52 111]
+average reward/episode = 79.0
+Training on 54/209 success/total out of 41 1-step experiences with actions distribution [  0  64  23 122]
+average reward/episode = 70.4
+Training on 39/209 success/total out of 57 1-step experiences with actions distribution [  0  65  38 106]
+average reward/episode = 77.0
+Training on 46/209 success/total out of 47 1-step experiences with actions distribution [ 6 46 75 82]
+average reward/episode = 84.5
+Training on 61/209 success/total out of 32 1-step experiences with actions distribution [  0  61  29 119]
+average reward/episode = 77.0
+Training on 40/209 success/total out of 47 1-step experiences with actions distribution [ 0 40 76 93]
+average reward/episode = 75.0
+Training on 40/209 success/total out of 51 1-step experiences with actions distribution [ 5 40 95 69]
+average reward/episode = 78.0
+Training on 51/209 success/total out of 45 1-step experiences with actions distribution [ 4 51 56 98]
+average reward/episode = 78.1
+Training on 55/209 success/total out of 44 1-step experiences with actions distribution [  0  67 111  31]
+average reward/episode = 85.1
+Training on 73/209 success/total out of 30 1-step experiences with actions distribution [ 0 86 42 81]
+average reward/episode = 73.6
+Training on 40/209 success/total out of 53 1-step experiences with actions distribution [ 13  50  35 111]
+average reward/episode = 86.0
+Training on 74/209 success/total out of 29 1-step experiences with actions distribution [ 0 74 45 90]
+average reward/episode = 77.5
+Training on 52/209 success/total out of 46 1-step experiences with actions distribution [ 0 52 60 97]
+average reward/episode = 77.5
+Training on 44/209 success/total out of 46 1-step experiences with actions distribution [  0  44 132  33]
+average reward/episode = 79.1
+Training on 48/209 success/total out of 42 1-step experiences with actions distribution [13 56 56 84]
+average reward/episode = 74.0
+Training on 40/209 success/total out of 52 1-step experiences with actions distribution [  0  41 112  56]
+average reward/episode = 84.0
+Training on 59/209 success/total out of 33 1-step experiences with actions distribution [ 6 59 61 83]
+average reward/episode = 79.7
+Training on 47/209 success/total out of 40 1-step experiences with actions distribution [ 0 64 62 83]
+average reward/episode = 76.1
+Training on 47/209 success/total out of 48 1-step experiences with actions distribution [  0  56  53 100]
+average reward/episode = 83.5
+Training on 50/209 success/total out of 34 1-step experiences with actions distribution [  0  50 137  22]
+average reward/episode = 79.2
+Training on 50/209 success/total out of 41 1-step experiences with actions distribution [  2  81 114  12]
+average reward/episode = 81.1
+Training on 60/209 success/total out of 38 1-step experiences with actions distribution [ 4 71 97 37]
+average reward/episode = 71.2
+Training on 54/209 success/total out of 57 1-step experiences with actions distribution [ 0 64 67 78]
+average reward/episode = 72.8
+Training on 48/209 success/total out of 52 1-step experiences with actions distribution [ 7 94 19 89]
+average reward/episode = 79.5
+Training on 64/209 success/total out of 42 1-step experiences with actions distribution [ 2 64 77 66]
+average reward/episode = 80.0
+Training on 56/209 success/total out of 41 1-step experiences with actions distribution [  4  56  34 115]
+average reward/episode = 88.0
+Training on 94/209 success/total out of 25 1-step experiences with actions distribution [  0  94   2 113]
+average reward/episode = 78.7
+Training on 59/209 success/total out of 41 1-step experiences with actions distribution [ 0 95 56 58]
+average reward/episode = 80.7
+Training on 64/209 success/total out of 38 1-step experiences with actions distribution [  0 100  52  57]
+average reward/episode = 76.6
+Training on 49/209 success/total out of 46 1-step experiences with actions distribution [ 4 64 99 42]
+average reward/episode = 77.6
+Training on 51/209 success/total out of 45 1-step experiences with actions distribution [13 61 56 79]
+average reward/episode = 75.2
+Training on 48/209 success/total out of 49 1-step experiences with actions distribution [  0  74  14 121]
+average reward/episode = 33.7
+Training on 23/208 success/total out of 110 1-step experiences with actions distribution [  0  29  24 155]
+average reward/episode = 76.1
+Training on 44/209 success/total out of 48 1-step experiences with actions distribution [ 3 48 85 73]
+average reward/episode = 80.6
+Training on 45/209 success/total out of 39 1-step experiences with actions distribution [ 0 56 73 80]
+average reward/episode = 83.5
+Training on 60/209 success/total out of 34 1-step experiences with actions distribution [ 3 60 53 93]
+average reward/episode = 78.5
+Training on 48/209 success/total out of 43 1-step experiences with actions distribution [11 53 59 86]
+average reward/episode = 79.0
+Training on 40/209 success/total out of 42 1-step experiences with actions distribution [  0  49  33 127]
+average reward/episode = 78.7
+Training on 51/209 success/total out of 42 1-step experiences with actions distribution [  0  79  25 105]
+average reward/episode = 82.5
+Training on 57/209 success/total out of 36 1-step experiences with actions distribution [ 0 57 57 95]
+average reward/episode = 83.5
+Training on 62/209 success/total out of 34 1-step experiences with actions distribution [17 62 44 86]
+average reward/episode = 77.6
+Training on 54/209 success/total out of 45 1-step experiences with actions distribution [ 0 61 89 59]
+average reward/episode = 84.5
+Training on 64/209 success/total out of 32 1-step experiences with actions distribution [ 0 64 95 50]
+average reward/episode = 78.0
+Training on 42/209 success/total out of 45 1-step experiences with actions distribution [  4  42  58 105]
+average reward/episode = 79.0
+Training on 55/209 success/total out of 43 1-step experiences with actions distribution [10 55 68 76]
+average reward/episode = 81.0
+Training on 56/209 success/total out of 39 1-step experiences with actions distribution [  0  56  49 104]
+average reward/episode = 76.3
+Training on 40/209 success/total out of 45 1-step experiences with actions distribution [  7  79  20 103]
+average reward/episode = 81.2
+Training on 61/209 success/total out of 37 1-step experiences with actions distribution [ 1 87 72 49]
+average reward/episode = 76.2
+Training on 43/209 success/total out of 47 1-step experiences with actions distribution [ 0 61 62 86]
+average reward/episode = 76.5
+Training on 58/209 success/total out of 48 1-step experiences with actions distribution [ 0 58 67 84]
+average reward/episode = 76.0
+Training on 35/209 success/total out of 48 1-step experiences with actions distribution [  0  39 119  51]
+average reward/episode = 78.0
+Training on 46/209 success/total out of 45 1-step experiences with actions distribution [  0  46  54 109]
+average reward/episode = 79.5
+Training on 54/209 success/total out of 42 1-step experiences with actions distribution [ 0 54 77 78]
+average reward/episode = 85.5
+Training on 83/209 success/total out of 29 1-step experiences with actions distribution [ 0 92 97 20]
+average reward/episode = 83.5
+Training on 69/209 success/total out of 34 1-step experiences with actions distribution [  0  69 122  18]
+average reward/episode = 79.6
+Training on 51/209 success/total out of 40 1-step experiences with actions distribution [  0  72  30 107]
